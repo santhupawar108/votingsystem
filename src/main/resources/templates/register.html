@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Save Employee</title>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+<div class="container">
+<h3>Employee directory</h3>
+<hr>
+<p class="h4 mb-4">Save Employee</p>
+ <form action="#" th:action="@{/voting/save}" th:object="${userinfo}"   method="post">
+<!-- for update hidden form field -->
+
+ <input type="hidden" th:field="*{id}"/>
+
+ <input type="text" th:field="*{username}" class="form-control mb-4 col-4" placeholder="user Name"> 
+<input type="text" th:field="*{password}" class="form-control mb-4 col-4" placeholder="Password">
+<input type="text" th:field="*{email}" class="form-control mb-4 col-4" placeholder="Enter Email">
+<input type="text" th:field="*{mobile}" class="form-control mb-4 col-4" placeholder="Enter mobile">
+<input type="text" th:field="*{roles}" class="form-control mb-4 col-4" placeholder="Enter Role">
+
+
+
+
+<br>
+
+
+
+<button type="submit" class="btn btn-info col-2">Save</button>
+<hr>
+
+<a th:href="@{/voting/login}">Login</a>
+</form>
+
+</div>
+</body>
+</html>

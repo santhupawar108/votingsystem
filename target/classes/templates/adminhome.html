@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+<title>Admin page</title>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+<div class="container">
+<h3>Admin Home Page</h3>
+<hr>
+
+<div sec:authorize="isAuthenticated()">
+     User Name: <span sec:authentication="name"></span></div>
+<hr>
+<!--  <a th:href="@{/voting/showform}" class="btn btn-primary btn-sm mb-3">Logout</a> -->
+<form th:action="@{/logout}" method="post">
+<input class="btn btn-primary btn-sm mb-3"  type="submit" value="Log out" >
+</form>
+<hr>
+<table class="table table-bordered table-striped">
+<thead class="thead-dark">
+<tr>
+<th>Candidate Name</th> 
+<th>Votes</th>
+<!--  <th>Action</th>-->
+</tr>
+</thead>
+<tbody>
+<tr th:each="tempcandidates : ${candidates}">
+
+<td th:text="${tempcandidates.name}"/>
+<td th:text="${tempcandidates.votes.size()}" />
+
+
+ 
+</tr>
+</tbody>
+
+</table>
+</div>
+</body>
+</html>

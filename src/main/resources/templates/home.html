@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Save Employee</title>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+<div class="container">
+<br>
+<div sec:authorize="isAuthenticated()">
+     User Name: <span sec:authentication="name"></span></div>
+<hr>
+<form th:action="@{/logout}" method="post">
+<input  type="submit" value="Log out" >
+</form>
+
+<hr>
+
+<p class="h4 mb-4">Voting form</p>
+
+
+
+ <form action="#" th:action="@{/voting/vote}" id="form1" th:object="${vote}"    method="post">
+
+  <div class="form-check">
+ <ul>
+ <li th:each="tempCandidate : ${candidates}">
+ 
+ <input class="form-check-input"  type="radio" name="candidate" th:path="${tempCandidate.id}" th:value="${tempCandidate.id}" >
+ 
+ <label class="form-check-label" th:for="${tempCandidate.name}">
+       <span th:text="${tempCandidate.name}"/> 
+      </label>
+ </li>
+ </ul> 
+ </div>
+
+<br>
+<button type="submit" class="btn btn-info col-2 btn1" >Vote</button>
+<hr>
+
+</form>
+
+</div>
+</body>
+</html>
